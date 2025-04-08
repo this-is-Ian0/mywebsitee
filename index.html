@@ -1,72 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name's Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            text-align: center;
-            width: 80%;
-            max-width: 800px;
-        }
-        h1 {
-            color: #333;
-        }
-        .section {
-            margin: 20px 0;
-        }
-        .section h2 {
-            color: #444;
-            margin-bottom: 10px;
-        }
-        .section p {
-            color: #666;
-            font-size: 1.1rem;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Your Name</h1>
-        
-        <!-- About Me Section -->
-        <div class="section" id="about">
-            <h2>About Me</h2>
-            <p>Write a short bio here. For example, describe your background, interests, and skills.</p>
+import { useState, useEffect } from "react";
+
+export default function Home() {
+  const [darkMode, setDarkMode] = useState(true);
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <main className={
+      `min-h-screen p-6 transition-colors duration-300 relative ` +
+      (darkMode ? "bg-black text-white" : "bg-white text-black")
+    }>
+      {/* Decorative Border */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-[-1]">
+        <div className="w-full h-full border-8 border-red-500 border-t-blue-500 border-b-blue-500 border-double"></div>
+      </div>
+
+      {/* Welcome Banner */}
+      <div className="overflow-hidden whitespace-nowrap mb-6">
+        <div className="animate-marquee text-2xl font-bold text-center text-red-400">
+          GET TO KNOW IAN
+        </div>
+        <style jsx>{`
+          .animate-marquee {
+            display: inline-block;
+            animation: marquee 10s linear infinite;
+          }
+          @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+          }
+        `}</style>
+      </div>
+
+      {/* Date & Time */}
+      <div className="text-center text-sm mb-4 text-gray-400">
+        {currentDateTime.toLocaleString()}
+      </div>
+
+      <section className="max-w-4xl mx-auto relative z-10">
+        {/* Toggle Theme Button */}
+        <div className="flex justify-end mb-6">
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-600 dark:bg-white dark:text-black"
+          >
+            Toggle {darkMode ? "Light" : "Dark"} Mode
+          </button>
         </div>
 
-        <!-- Contact Information Section -->
-        <div class="section" id="contact">
-            <h2>Contact Information</h2>
-            <p>Email: [Your email]</p>
-            <p>Phone: [Your phone number]</p>
+        {/* Hero Section */}
+        <div className="text-center py-20">
+          <div className="w-32 h-32 mx-auto mb-4">
+            <img
+              src="/your-photo.jpg"
+              alt="Your Name"
+              className="rounded-full object-cover w-full h-full shadow-lg"
+            />
+          </div>
+          <h1 className="text-4xl font-bold mb-2">Your Name</h1>
+          <p className="text-lg text-gray-300 dark:text-gray-700">Your Title or Tagline</p>
         </div>
 
-        <!-- Social Media Links Section -->
-        <div class="section" id="social-media">
-            <h2>Social Media</h2>
-            <p>LinkedIn: [Your LinkedIn URL]</p>
-            <p>Twitter: [Your Twitter URL]</p>
-            <p>GitHub: [Your GitHub URL]</p>
-        </div>
+        {/* About Section */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-semibold mb-4">About Me</h2>
+          <p className="text-gray-300 dark:text-gray-700">
+            Add a short bio here. Mention your background, interests, or anything else you'd like visitors to know.
+          </p>
+        </section>
 
-        <!-- Additional Sections can be added here -->
-        <div class="section" id="projects">
-            <h2>My Projects</h2>
-            <p>List your projects here, with links or descriptions if you want.</p>
-        </div>
+        {/* Projects Section */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-semibold mb-4">Projects</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="p-4 bg-gray-800 dark:bg-gray-200 rounded-2xl shadow">
+              <h3 className="text-xl font-bold mb-2">Project Title</h3>
+              <p className="text-gray-300 dark:text-gray-700">Short description of the project.</p>
+            </div>
+            <div className="p-4 bg-gray-800 dark:bg-gray-200 rounded-2xl shadow">
+              <h3 className="text-xl font-bold mb-2">Project Title</h3>
+              <p className="text-gray-300 dark:text-gray-700">Short description of the project.</p>
+            </div>
+          </div>
+        </section>
 
-    </div>
-</body>
-</html>
+        {/* Contact Section */}
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Contact</h2>
+          <p className="text-gray-300 dark:text-gray-700">You can reach me at: <span className="font-medium text-white dark:text-black">your.email@example.com</span></p>
+        </section>
+      </section>
+    </main>
+  );
+}
