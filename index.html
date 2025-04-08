@@ -12,30 +12,22 @@ export default function Home() {
   }, []);
 
   return (
-    <main className={
-      `min-h-screen p-6 transition-colors duration-300 relative ` +
-      (darkMode ? "bg-black text-white" : "bg-white text-black")
-    }>
+    <main
+      className={
+        `min-h-screen p-6 transition-colors duration-300 relative ` +
+        (darkMode ? "bg-black text-white" : "bg-white text-black")
+      }
+    >
       {/* Decorative Border */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-[-1]">
         <div className="w-full h-full border-8 border-red-500 border-t-blue-500 border-b-blue-500 border-double"></div>
       </div>
 
       {/* Welcome Banner */}
-      <div className="overflow-hidden whitespace-nowrap mb-6">
-        <div className="animate-marquee text-2xl font-bold text-center text-red-400">
+      <div className="overflow-hidden w-full mb-6">
+        <div className="text-2xl font-bold text-red-400 animate-slide-left inline-block whitespace-nowrap">
           GET TO KNOW IAN
         </div>
-        <style jsx>{`
-          .animate-marquee {
-            display: inline-block;
-            animation: marquee 10s linear infinite;
-          }
-          @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-          }
-        `}</style>
       </div>
 
       {/* Date & Time */}
@@ -93,9 +85,33 @@ export default function Home() {
         {/* Contact Section */}
         <section>
           <h2 className="text-2xl font-semibold mb-4">Contact</h2>
-          <p className="text-gray-300 dark:text-gray-700">You can reach me at: <span className="font-medium text-white dark:text-black">your.email@example.com</span></p>
+          <p className="text-gray-300 dark:text-gray-700">
+            You can reach me at:{" "}
+            <span className="font-medium text-white dark:text-black">
+              your.email@example.com
+            </span>
+          </p>
         </section>
       </section>
+
+      {/* Tailwind Custom Styles */}
+      <style>{`
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+        @layer utilities {
+          .animate-slide-left {
+            animation: slide-left 10s linear infinite;
+          }
+
+          @keyframes slide-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+          }
+        }
+      `}</style>
     </main>
   );
 }
+
