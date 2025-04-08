@@ -1,117 +1,102 @@
-import { useState, useEffect } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GET TO KNOW IAN</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: "Courier New", Courier, monospace;
+      padding: 40px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+    .content {
+      max-width: 600px;
+      white-space: pre-wrap;
+      visibility: hidden;
+    }
+    a {
+      color: #00bfff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .command-line {
+      color: white;
+      margin: 20px 0;
+    }
+    .prompt {
+      color: green;
+    }
+    .prompt span {
+      color: #00ffff;
+    }
+    img {
+      max-width: 400px;
+      border-radius: 10px;
+    }
+    .typewriter-text {
+      border-right: .15em solid white;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      width: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="content" id="content">
+    <h1 class="typewriter-text">GET TO KNOW IAN</h1>
+    <p class="typewriter-text">Owner@muriuki.coffee</p>
+    <p class="typewriter-text">Welcome</p>
+    <p class="typewriter-text">I create websites</p>
 
-export default function Home() {
-  const [darkMode, setDarkMode] = useState(true);
-  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+    <div class="command-line typewriter-text">
+      <span class="prompt">admin:<span>$</span></span> system info
+    </div>
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentDateTime(new Date());
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+    <p class="typewriter-text">Hi, I'm Ian Muriuki.</p>
+    <p class="typewriter-text">A Computer enthusiast.</p>
+    <p class="typewriter-text">Email Address: <a href="mailto:ianimuriuki@gmail.com.c">ianimuriuki@gmail.com</a></p>
+  </div>
+  <div>
+  </div>
+  <script>
+    const elements = document.querySelectorAll('.typewriter-text');
+    const container = document.getElementById('content');
 
-  return (
-    <main
-      className={
-        `min-h-screen p-6 transition-colors duration-300 relative ` +
-        (darkMode ? "bg-black text-white" : "bg-white text-black")
+    window.onload = () => {
+      container.style.visibility = 'visible';
+      let index = 0;
+
+      function typeNext() {
+        if (index >= elements.length) return;
+
+        const el = elements[index];
+        const text = el.innerHTML;
+        el.innerHTML = '';
+        el.style.width = 'auto';
+        let charIndex = 0;
+
+        const typeInterval = setInterval(() => {
+          el.innerHTML = text.slice(0, charIndex + 1);
+          charIndex++;
+          if (charIndex === text.length) {
+            clearInterval(typeInterval);
+            el.style.borderRight = 'none';
+            index++;
+            typeNext();
+          }
+        }, 30);
       }
-    >
-      {/* Decorative Border */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-[-1]">
-        <div className="w-full h-full border-8 border-red-500 border-t-blue-500 border-b-blue-500 border-double"></div>
-      </div>
 
-      {/* Welcome Banner */}
-      <div className="overflow-hidden w-full mb-6">
-        <div className="text-2xl font-bold text-red-400 animate-slide-left inline-block whitespace-nowrap">
-          GET TO KNOW IAN
-        </div>
-      </div>
-
-      {/* Date & Time */}
-      <div className="text-center text-sm mb-4 text-gray-400">
-        {currentDateTime.toLocaleString()}
-      </div>
-
-      <section className="max-w-4xl mx-auto relative z-10">
-        {/* Toggle Theme Button */}
-        <div className="flex justify-end mb-6">
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-600 dark:bg-white dark:text-black"
-          >
-            Toggle {darkMode ? "Light" : "Dark"} Mode
-          </button>
-        </div>
-
-        {/* Hero Section */}
-        <div className="text-center py-20">
-          <div className="w-32 h-32 mx-auto mb-4">
-            <img
-              src="/your-photo.jpg"
-              alt="Your Name"
-              className="rounded-full object-cover w-full h-full shadow-lg"
-            />
-          </div>
-          <h1 className="text-4xl font-bold mb-2">Your Name</h1>
-          <p className="text-lg text-gray-300 dark:text-gray-700">Your Title or Tagline</p>
-        </div>
-
-        {/* About Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4">About Me</h2>
-          <p className="text-gray-300 dark:text-gray-700">
-            Add a short bio here. Mention your background, interests, or anything else you'd like visitors to know.
-          </p>
-        </section>
-
-        {/* Projects Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4">Projects</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="p-4 bg-gray-800 dark:bg-gray-200 rounded-2xl shadow">
-              <h3 className="text-xl font-bold mb-2">Project Title</h3>
-              <p className="text-gray-300 dark:text-gray-700">Short description of the project.</p>
-            </div>
-            <div className="p-4 bg-gray-800 dark:bg-gray-200 rounded-2xl shadow">
-              <h3 className="text-xl font-bold mb-2">Project Title</h3>
-              <p className="text-gray-300 dark:text-gray-700">Short description of the project.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Contact</h2>
-          <p className="text-gray-300 dark:text-gray-700">
-            You can reach me at:{" "}
-            <span className="font-medium text-white dark:text-black">
-              your.email@example.com
-            </span>
-          </p>
-        </section>
-      </section>
-
-      {/* Tailwind Custom Styles */}
-      <style>{`
-        @tailwind base;
-        @tailwind components;
-        @tailwind utilities;
-
-        @layer utilities {
-          .animate-slide-left {
-            animation: slide-left 10s linear infinite;
-          }
-
-          @keyframes slide-left {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-          }
-        }
-      `}</style>
-    </main>
-  );
-}
-
+      typeNext();
+    };
+  </script>
+</body>
+</html>
