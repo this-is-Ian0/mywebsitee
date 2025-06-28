@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GET TO KNOW IAN</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
     body {
       background-color: black;
@@ -11,13 +12,14 @@
       font-family: "Courier New", Courier, monospace;
       padding: 40px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       font-size: 14px;
     }
     .content {
       max-width: 600px;
       white-space: pre-wrap;
       visibility: hidden;
+      text-align: center;
     }
     a {
       color: #00bfff;
@@ -36,16 +38,17 @@
     .prompt span {
       color: #00ffff;
     }
-    img {
-      max-width: 400px;
-      border-radius: 10px;
-    }
     .typewriter-text {
       border-right: .15em solid white;
       white-space: nowrap;
       overflow: hidden;
-      display: inline-block;
-      width: 0;
+      display: none;
+    }
+    model-viewer {
+      width: 150px;
+      height: 150px;
+      display: block;
+      margin: 40px auto 0;
     }
   </style>
 </head>
@@ -62,10 +65,19 @@
 
     <p class="typewriter-text">Hi, I'm Ian Muriuki.</p>
     <p class="typewriter-text">A Computer enthusiast.</p>
-    
+
+    <!-- Interactive 3D Beer Mug -->
+    <model-viewer
+      src="https://modelviewer.dev/shared-assets/models/Beer.glb"
+      alt="3D Beer Mug"
+      auto-rotate
+      camera-controls
+      ar
+      disable-zoom
+      exposure="0.8"
+    ></model-viewer>
   </div>
-  <div>
-  </div>
+
   <script>
     const elements = document.querySelectorAll('.typewriter-text');
     const container = document.getElementById('content');
@@ -80,7 +92,7 @@
         const el = elements[index];
         const text = el.innerHTML;
         el.innerHTML = '';
-        el.style.width = 'auto';
+        el.style.display = 'inline-block';
         let charIndex = 0;
 
         const typeInterval = setInterval(() => {
@@ -100,4 +112,3 @@
   </script>
 </body>
 </html>
-
