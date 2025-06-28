@@ -27,7 +27,7 @@
       display: none;
     }
 
-    /* Red heading glow */
+    /* 🔴 Glowing Red Heading */
     .heading-red {
       color: red;
       animation: pulse-glow 1.5s ease-in-out infinite;
@@ -37,6 +37,7 @@
         0 0 20px #ff0000,
         0 0 30px #ff3333;
     }
+
     @keyframes pulse-glow {
       0%, 100% {
         text-shadow:
@@ -53,19 +54,6 @@
           0 0 15px #ff0000;
       }
     }
-
-    /* Portal GIF */
-    .portal {
-      width: 300px;
-      margin: 40px auto 0;
-      display: none;
-      animation: fadeIn 1s ease-in-out forwards;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
   </style>
 </head>
 <body>
@@ -79,48 +67,31 @@
     </div>
     <p class="typewriter-text">Hi, I'm Ian Muriuki.</p>
     <p class="typewriter-text">A Computer enthusiast.</p>
-
-    <!-- ✅ Portal animation -->
-    <img
-      id="portal"
-      class="portal"
-      src="https://media.tenor.com/qKkv3zq1C6gAAAAC/rick-and-morty-portal.gif"
-      alt="Rick and Morty teleporting"
-    />
   </div>
 
   <script>
     const elements = document.querySelectorAll('.typewriter-text');
-    const portal = document.getElementById('portal');
     const container = document.getElementById('content');
-
     window.onload = () => {
       container.style.visibility = 'visible';
       let i = 0;
-
       function typeNext() {
-        if (i >= elements.length) {
-          portal.style.display = 'block';
-          return;
-        }
-
+        if (i >= elements.length) return;
         const el = elements[i];
-        const text = el.textContent;
+        const txt = el.textContent;
         el.textContent = '';
         el.style.display = 'inline-block';
-
-        let charIndex = 0;
-        const interval = setInterval(() => {
-          el.textContent = text.slice(0, ++charIndex);
-          if (charIndex === text.length) {
-            clearInterval(interval);
+        let n = 0;
+        const tick = setInterval(() => {
+          el.textContent = txt.slice(0, ++n);
+          if (n === txt.length) {
+            clearInterval(tick);
             el.style.borderRight = 'none';
             i++;
             typeNext();
           }
         }, 40);
       }
-
       typeNext();
     };
   </script>
