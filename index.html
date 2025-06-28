@@ -3,116 +3,143 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GET TO KNOW IAN</title>
+  <title>Ian Muriuki - Web Creator</title>
   <style>
-    /* 🔵 Starry Background Animation */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: -1;
-      background: radial-gradient(white 1px, transparent 1px),
-                  radial-gradient(white 1px, transparent 1px);
-      background-size: 3px 3px, 2px 2px;
-      background-position: 0 0, 1.5px 1.5px;
-      animation: stars 100s linear infinite;
-      opacity: 0.2;
-    }
-
-    @keyframes stars {
-      from { background-position: 0 0, 1.5px 1.5px; }
-      to { background-position: 10000px 5000px, 10000px 5000px; }
-    }
-
     body {
-      background-color: black;
-      color: white;
-      font-family: "Courier New", Courier, monospace;
-      padding: 40px;
-      display: flex;
-      justify-content: center;
-      font-size: 14px;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0d0d0d;
+      color: #ffffff;
     }
 
-    .content {
-      max-width: 600px;
-      white-space: pre-wrap;
-      visibility: hidden;
+    header {
+      background-color: #1a1a1a;
+      padding: 30px 50px;
       text-align: center;
+      border-bottom: 3px solid #ffaa00;
     }
 
-    .typewriter-text {
-      white-space: nowrap;
-      overflow: hidden;
-      display: none;
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #ffaa00;
     }
 
-    .heading-red {
-      color: red;
-      animation: pulse-glow 1.5s ease-in-out infinite;
-      text-shadow:
-        0 0 5px red,
-        0 0 10px red,
-        0 0 20px #ff0000,
-        0 0 30px #ff3333;
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #cccccc;
     }
 
-    @keyframes pulse-glow {
-      0%, 100% {
-        text-shadow:
-          0 0 5px red,
-          0 0 10px red,
-          0 0 20px #ff0000,
-          0 0 30px #ff3333;
+    section {
+      padding: 60px 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .highlight {
+      color: #ffaa00;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-left: 5px solid #ffaa00;
+      padding-left: 15px;
+    }
+
+    .services, .about, .domain, .contact {
+      margin-bottom: 60px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 10px 0;
+      border-bottom: 1px solid #333;
+    }
+
+    a {
+      color: #ffaa00;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #1a1a1a;
+      border-top: 2px solid #ffaa00;
+    }
+
+    footer p {
+      margin: 5px;
+      color: #999;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
       }
-      50% {
-        text-shadow:
-          0 0 2px red,
-          0 0 5px red,
-          0 0 10px #990000,
-          0 0 15px #ff0000;
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      section {
+        padding: 30px 20px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="content" id="content">
-    <h1 class="typewriter-text heading-red">GET TO KNOW IAN</h1>
-    <p class="typewriter-text">Owner@muriuki.coffee</p>
-    <p class="typewriter-text">Welcome</p>
-    <p class="typewriter-text">I create websites</p>
-    <div class="typewriter-text">
-      <span style="color: green">admin:<span style="color: #00ffff">$</span></span> system info
-    </div>
-    <p class="typewriter-text">Hi, I'm Ian Muriuki.</p>
-    <p class="typewriter-text">A Computer enthusiast.</p>
-  </div>
+  <header>
+    <h1>Ian Muriuki</h1>
+    <p>Crafting websites for over <span class="highlight">10 years</span> | Owner of <a href="#">muriuki.coffee</a></p>
+  </header>
 
-  <script>
-    const elements = document.querySelectorAll('.typewriter-text');
-    const container = document.getElementById('content');
+  <section class="services">
+    <h2 class="section-title">💼 Services</h2>
+    <ul>
+      <li>Custom Website Design</li>
+      <li>Frontend Development (HTML, CSS, JavaScript)</li>
+      <li>Responsive & Mobile-Ready Layouts</li>
+      <li>Landing Pages & Portfolios</li>
+      <li>Website Revamps & Optimization</li>
+    </ul>
+  </section>
 
-    window.onload = () => {
-      container.style.visibility = 'visible';
-      let i = 0;
-      function typeNext() {
-        if (i >= elements.length) return;
-        const el = elements[i];
-        const txt = el.textContent;
-        el.textContent = '';
-        el.style.display = 'inline-block';
-        let n = 0;
-        const tick = setInterval(() => {
-          el.textContent = txt.slice(0, ++n);
-          if (n === txt.length) {
-            clearInterval(tick);
-            i++;
-            typeNext();
-          }
-        }, 40);
-      }
-      typeNext();
-    };
-  </script>
+  <section class="about">
+    <h2 class="section-title">👋 About Ian</h2>
+    <p>
+      With a decade of hands-on experience in the web industry, I specialize in creating fast, modern, and visually engaging websites. Whether you're a small business, a personal brand, or a startup, I bring your vision to life with precision and creativity.
+    </p>
+  </section>
+
+  <section class="domain">
+    <h2 class="section-title">🌐 My Domain: <span class="highlight">muriuki.coffee</span></h2>
+    <p>
+      More than just a domain—<span class="highlight">muriuki.coffee</span> represents my dedication to craft and community. It's where innovation brews daily. Visit the site to explore my latest projects and client success stories.
+    </p>
+  </section>
+
+  <section class="contact">
+    <h2 class="section-title">📬 Contact</h2>
+    <p>Ready to bring your project to life?</p>
+    <p>Email: <a href="mailto:ian@muriuki.coffee">ian@muriuki.coffee</a></p>
+    <p>Call/WhatsApp: +254 7XX XXX XXX</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Ian Muriuki. All Rights Reserved.</p>
+    <p>Powered by <span class="highlight">muriuki.coffee</span></p>
+  </footer>
 </body>
 </html>
