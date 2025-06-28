@@ -26,11 +26,50 @@
       overflow: hidden;
       display: none;
     }
+
+    /* Glowing Red Heading */
+    .heading-red {
+      color: red;
+      animation: pulse-glow 1.5s ease-in-out infinite;
+      text-shadow:
+        0 0 5px red,
+        0 0 10px red,
+        0 0 20px #ff0000,
+        0 0 30px #ff3333;
+    }
+    @keyframes pulse-glow {
+      0%, 100% {
+        text-shadow:
+          0 0 5px red,
+          0 0 10px red,
+          0 0 20px #ff0000,
+          0 0 30px #ff3333;
+      }
+      50% {
+        text-shadow:
+          0 0 2px red,
+          0 0 5px red,
+          0 0 10px #990000,
+          0 0 15px #ff0000;
+      }
+    }
+
+    /* Portal GIF styling */
+    .portal {
+      display: none;
+      margin: 40px auto 0;
+      width: 300px;
+      opacity: 0;
+      animation: fadeInPortal 1s forwards;
+    }
+    @keyframes fadeInPortal {
+      to { opacity: 1; }
+    }
   </style>
 </head>
 <body>
   <div class="content" id="content">
-    <h1 class="typewriter-text">GET TO KNOW IAN</h1>
+    <h1 class="typewriter-text heading-red">GET TO KNOW IAN</h1>
     <p class="typewriter-text">Owner@muriuki.coffee</p>
     <p class="typewriter-text">Welcome</p>
     <p class="typewriter-text">I create websites</p>
@@ -39,16 +78,27 @@
     </div>
     <p class="typewriter-text">Hi, I'm Ian Muriuki.</p>
     <p class="typewriter-text">A Computer enthusiast.</p>
+
+    <!-- Portal GIF -->
+    <img src="https://media.tenor.com/images/0e3bd9c6113c51c4af75d3f0e809739a/tenor.gif"
+         alt="Rick and Morty portal teleporting"
+         class="portal" id="portal" />
   </div>
 
   <script>
     const elements = document.querySelectorAll('.typewriter-text');
+    const portal = document.getElementById('portal');
     const container = document.getElementById('content');
+
     window.onload = () => {
       container.style.visibility = 'visible';
       let i = 0;
+
       function typeNext() {
-        if (i >= elements.length) return;
+        if (i >= elements.length) {
+          portal.style.display = 'block';
+          return;
+        }
         const el = elements[i];
         const txt = el.textContent;
         el.textContent = '';
