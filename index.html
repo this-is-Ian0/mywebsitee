@@ -32,6 +32,7 @@
       height: 180px;
       display: block;
       margin: 40px auto 0;
+      background: transparent;
     }
   </style>
 </head>
@@ -41,20 +42,19 @@
     <p class="typewriter-text">Owner@muriuki.coffee</p>
     <p class="typewriter-text">Welcome</p>
     <p class="typewriter-text">I create websites</p>
-    <div class="command-line typewriter-text">
+    <div class="typewriter-text">
       <span style="color: green">admin:<span style="color: #00ffff">$</span></span> system info
     </div>
     <p class="typewriter-text">Hi, I'm Ian Muriuki.</p>
     <p class="typewriter-text">A Computer enthusiast.</p>
 
-    <!-- ✅ Interactive Beer Can -->
+    <!-- ✅ Interactive 3D Beer Mug -->
     <model-viewer
-      src="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models@master/2.0/BeerCan/glTF/BeerCan.gltf"
-      alt="Interactive 3D beer can"
+      src="https://www.filer.dev/assets/beer-mug.glb"
+      alt="3D Beer Mug"
       auto-rotate
       camera-controls
       ar
-      style="background: transparent"
     ></model-viewer>
   </div>
 
@@ -63,20 +63,20 @@
     const container = document.getElementById('content');
     window.onload = () => {
       container.style.visibility = 'visible';
-      let idx = 0;
+      let i = 0;
       function typeNext() {
-        if (idx >= elements.length) return;
-        const el = elements[idx];
+        if (i >= elements.length) return;
+        const el = elements[i];
         const txt = el.textContent;
         el.textContent = '';
         el.style.display = 'inline-block';
-        let c = 0;
-        const iv = setInterval(() => {
-          el.textContent = txt.slice(0, ++c);
-          if (c === txt.length) {
-            clearInterval(iv);
+        let n = 0;
+        const tick = setInterval(() => {
+          el.textContent = txt.slice(0, ++n);
+          if (n === txt.length) {
+            clearInterval(tick);
             el.style.borderRight = 'none';
-            idx++;
+            i++;
             typeNext();
           }
         }, 40);
