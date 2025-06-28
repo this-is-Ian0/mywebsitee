@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GET TO KNOW IAN</title>
   <style>
+    /* 🔵 Starry Background Animation */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+      background: radial-gradient(white 1px, transparent 1px),
+                  radial-gradient(white 1px, transparent 1px);
+      background-size: 3px 3px, 2px 2px;
+      background-position: 0 0, 1.5px 1.5px;
+      animation: stars 100s linear infinite;
+      opacity: 0.2;
+    }
+
+    @keyframes stars {
+      from { background-position: 0 0, 1.5px 1.5px; }
+      to { background-position: 10000px 5000px, 10000px 5000px; }
+    }
+
     body {
       background-color: black;
       color: white;
@@ -14,12 +33,14 @@
       justify-content: center;
       font-size: 14px;
     }
+
     .content {
       max-width: 600px;
       white-space: pre-wrap;
       visibility: hidden;
       text-align: center;
     }
+
     .typewriter-text {
       border-right: .15em solid white;
       white-space: nowrap;
@@ -27,7 +48,6 @@
       display: none;
     }
 
-    /* 🔴 Glowing Red Heading */
     .heading-red {
       color: red;
       animation: pulse-glow 1.5s ease-in-out infinite;
