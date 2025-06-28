@@ -84,3 +84,45 @@
     <img
       id="portal"
       class="portal"
+      src="https://media.tenor.com/qKkv3zq1C6gAAAAC/rick-and-morty-portal.gif"
+      alt="Rick and Morty teleporting"
+    />
+  </div>
+
+  <script>
+    const elements = document.querySelectorAll('.typewriter-text');
+    const portal = document.getElementById('portal');
+    const container = document.getElementById('content');
+
+    window.onload = () => {
+      container.style.visibility = 'visible';
+      let i = 0;
+
+      function typeNext() {
+        if (i >= elements.length) {
+          portal.style.display = 'block';
+          return;
+        }
+
+        const el = elements[i];
+        const text = el.textContent;
+        el.textContent = '';
+        el.style.display = 'inline-block';
+
+        let charIndex = 0;
+        const interval = setInterval(() => {
+          el.textContent = text.slice(0, ++charIndex);
+          if (charIndex === text.length) {
+            clearInterval(interval);
+            el.style.borderRight = 'none';
+            i++;
+            typeNext();
+          }
+        }, 40);
+      }
+
+      typeNext();
+    };
+  </script>
+</body>
+</html>
