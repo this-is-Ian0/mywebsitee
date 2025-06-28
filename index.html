@@ -42,7 +42,6 @@
     }
 
     .typewriter-text {
-      border-right: .15em solid white;
       white-space: nowrap;
       overflow: hidden;
       display: none;
@@ -92,6 +91,7 @@
   <script>
     const elements = document.querySelectorAll('.typewriter-text');
     const container = document.getElementById('content');
+
     window.onload = () => {
       container.style.visibility = 'visible';
       let i = 0;
@@ -106,7 +106,6 @@
           el.textContent = txt.slice(0, ++n);
           if (n === txt.length) {
             clearInterval(tick);
-            el.style.borderRight = 'none';
             i++;
             typeNext();
           }
