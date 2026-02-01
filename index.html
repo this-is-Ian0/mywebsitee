@@ -1,145 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ian Muriuki - Web Creator</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0d0d0d;
-      color: #ffffff;
-    }
-
-    header {
-      background-color: #1a1a1a;
-      padding: 30px 50px;
-      text-align: center;
-      border-bottom: 3px solid #ffaa00;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: #ffaa00;
-    }
-
-    header p {
-      margin-top: 10px;
-      font-size: 1.2rem;
-      color: #cccccc;
-    }
-
-    section {
-      padding: 60px 40px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .highlight {
-      color: #ffaa00;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      border-left: 5px solid #ffaa00;
-      padding-left: 15px;
-    }
-
-    .services, .about, .domain, .contact {
-      margin-bottom: 60px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    li {
-      padding: 10px 0;
-      border-bottom: 1px solid #333;
-    }
-
-    a {
-      color: #ffaa00;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      background-color: #1a1a1a;
-      border-top: 2px solid #ffaa00;
-    }
-
-    footer p {
-      margin: 5px;
-      color: #999;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      .section-title {
-        font-size: 1.5rem;
-      }
-
-      section {
-        padding: 30px 20px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Architect | Global Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0a0a0a; color: #ffffff; overflow-x: hidden; }
+        .blue-glow { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+        .text-gradient {
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Ticker Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 30s linear infinite;
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>Ian Muriuki</h1>
-    <p>Crafting websites for over <span class="highlight">10 years</span> | Owner of <a href="#">muriuki.coffee</a></p>
-  </header>
+<body class="font-sans antialiased">
 
-  <section class="services">
-    <h2 class="section-title">💼 Services</h2>
-    <ul>
-      <li>Custom Website Design</li>
-      <li>Frontend Development (HTML, CSS, JavaScript)</li>
-      <li>Responsive & Mobile-Ready Layouts</li>
-      <li>Landing Pages & Portfolios</li>
-      <li>Website Revamps & Optimization</li>
-    </ul>
-  </section>
+    <div class="bg-blue-600/10 border-b border-blue-500/30 py-2 overflow-hidden whitespace-nowrap">
+        <div class="animate-marquee text-[10px] font-mono uppercase tracking-widest text-blue-400">
+            <div id="ticker-content" class="flex gap-12">
+                </div>
+            <div id="ticker-content-2" class="flex gap-12 ml-12">
+                </div>
+        </div>
+    </div>
 
-  <section class="about">
-    <h2 class="section-title">👋 About Ian</h2>
-    <p>
-      With a decade of hands-on experience in the web industry, I specialize in creating fast, modern, and visually engaging websites. Whether you're a small business, a personal brand, or a startup, I bring your vision to life with precision and creativity.
-    </p>
-  </section>
+    <nav class="p-6 flex justify-between items-center border-b border-white/5">
+        <div class="text-2xl font-bold tracking-tighter blue-glow px-2 py-1 bg-blue-600 rounded">DEV.EXE</div>
+        <div class="hidden md:flex space-x-8 text-gray-400">
+            <a href="#" class="hover:text-blue-400 transition">Projects</a>
+            <a href="#" class="hover:text-blue-400 transition">Stack</a>
+            <a href="#" class="border border-blue-500 px-4 py-2 rounded-full text-blue-400 hover:bg-blue-500 hover:text-white transition">Contact</a>
+        </div>
+    </nav>
 
-  <section class="domain">
-    <h2 class="section-title">🌐 My Domain: <span class="highlight">muriuki.coffee</span></h2>
-    <p>
-      More than just a domain—<span class="highlight">muriuki.coffee</span> represents my dedication to craft and community. It's where innovation brews daily. Visit the site to explore my latest projects and client success stories.
-    </p>
-  </section>
+    <main class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
+        <div class="md:w-2/3 space-y-6">
+            <h2 class="text-blue-500 font-mono tracking-widest uppercase flex items-center gap-2">
+                <span class="w-8 h-[1px] bg-blue-500"></span> 
+                System Architect & Problem Solver
+            </h2>
+            <h1 class="text-6xl md:text-8xl font-extrabold leading-tight">
+                Turning <span class="text-gradient">Logic</span> <br> Into Digital Art.
+            </h1>
+            <p class="text-gray-400 text-xl max-w-xl leading-relaxed">
+                High-performance backend architecture. Pixel-perfect frontends. I bridge the gap between complex requirements and elegant, global solutions.
+            </p>
+            <div class="flex space-x-4 pt-4">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold transition transform hover:scale-105">
+                    View My Github
+                </button>
+            </div>
+        </div>
 
-  <section class="contact">
-    <h2 class="section-title">📬 Contact</h2>
-    <p>Ready to bring your project to life?</p>
-    <p>Email: <a href="mailto:ian@muriuki.coffee">ian@muriuki.coffee</a></p>
-    <p>Call/WhatsApp: +254 707215389</p>
-  </section>
+        <div class="md:w-1/3 mt-12 md:mt-0 flex justify-center relative">
+            <div class="w-80 h-80 md:w-96 md:h-96 border-2 border-blue-500 rounded-2xl relative overflow-hidden blue-glow group">
+                <img src="me.png" alt="Developer Avatar" class="w-full h-full object-cover">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                    <p class="text-blue-400 font-mono text-xs text-center uppercase tracking-widest">Core Intelligence Optimized</p>
+                </div>
+            </div>
+        </div>
+    </main>
 
-  <footer>
-    <p>© 2025 Ian Muriuki. All Rights Reserved.</p>
-    <p>Powered by <span class="highlight">muriuki.coffee</span></p>
-  </footer>
+    <script>
+        function updateTicker() {
+            const zones = [
+                { label: 'UTC', timeZone: 'UTC' },
+                { label: 'New York', timeZone: 'America/New_York' },
+                { label: 'London', timeZone: 'Europe/London' },
+                { label: 'Nairobi', timeZone: 'Africa/Nairobi' },
+                { label: 'Tokyo', timeZone: 'Asia/Tokyo' },
+                { label: 'San Francisco', timeZone: 'America/Los_Angeles' },
+                { label: 'Dubai', timeZone: 'Asia/Dubai' }
+            ];
+
+            const formatter = (tz) => new Intl.DateTimeFormat('en-GB', {
+                hour: '2-digit', minute: '2-digit', second: '2-digit',
+                timeZone: tz, hour12: false
+            }).format(new Date());
+
+            const content = zones.map(z => `<span>${z.label}: <span class="text-white">${formatter(z.timeZone)}</span></span>`).join('<span class="text-blue-900 mx-4">|</span>');
+            
+            document.getElementById('ticker-content').innerHTML = content;
+            document.getElementById('ticker-content-2').innerHTML = content;
+        }
+
+        setInterval(updateTicker, 1000);
+        updateTicker();
+    </script>
 </body>
 </html>
